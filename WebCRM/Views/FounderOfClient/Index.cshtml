@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Учредители клиента";
+}
+@model List<Founder>
+<div class="container">
+    <a asp-action="Create" asp-route-idClient="@ViewBag.idClient" class="btn btn-primary my-sm-1">Добавить новых</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Инн</th>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Отчество</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var founder in Model)
+            {
+                <tr>
+                    <th scope="row">
+                        <form method="post" action="/FounderOfClient/Delete">
+                            <input type="text" hidden value="@founder.Id" name="idFounder" />
+                            <input type="text" hidden value="@ViewBag.idClient" name="idClient" />
+                            <input type="submit" value="Удалить" class="btn btn-outline-dark" />
+                        </form>
+                    </th>
+                    <td>@founder.Inn</td>
+                    <td>@founder.Syrname</td>
+                    <td>@founder.Name</td>
+                    <td>@founder.Patronymic</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

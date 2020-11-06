@@ -1,0 +1,44 @@
+﻿@model List<Client>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <h2>@item.Name</h2>
+            <p>@item.Inn</p>
+            @if(item.Type == 1)
+            {
+                <p>Физическое лицо</p>
+            }
+            @if(item.Type == 2)
+            {
+                <p>Юридическое лицо</p>
+            }
+            <p>Дата создания:</p>
+            <p>@item.DateCreate</p>
+            <p>Дата обновления:</p>
+            <p>@item.DateUpdate</p>
+            <div class="row">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary">Изменить</a>
+                        </div>
+                        <div class="col-md-4">
+                            <form method="post" action="/Client/Delete">
+                                <input hidden value="@item.Id" name="id" />
+                                <input type="submit" value="Удалить" class="btn btn-primary" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid my-sm-1">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <a asp-controller="FounderOfClient" asp-action="Index" asp-route-idClient="@item.Id" class="btn btn-primary">Простмотр учредителей</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

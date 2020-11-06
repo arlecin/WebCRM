@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Добавить учредителя";
+}
+@model List<Founder>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post" action="/FounderOfClient/Create">
+                <input type="text" hidden value="@ViewBag.idClient" name="idClient" />
+                <select class="custom-select" name="idFounder">
+                    @foreach (var founder in Model)
+                    {
+                        <option value="@founder.Id">@string.Format("{0} {1} {2}", founder.Syrname, founder.Name, founder.Patronymic)</option>
+                    }
+                </select>
+                <input type="submit" value="Добавить" class="btn btn-primary my-sm-2" />
+                <a asp-action="Index" asp-route-idClient="@ViewBag.idClient" class="btn btn-primary">Отмена</a>
+            </form>
+        </div>
+    </div>
+</div>

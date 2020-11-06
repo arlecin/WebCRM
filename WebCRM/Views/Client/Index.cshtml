@@ -1,0 +1,26 @@
+﻿@model PageViewModel<Client>
+@{
+    ViewData["Title"] = "Клиенты";
+}
+
+<div class="container">
+    <div>
+        <a asp-action="Create" class="btn btn-primary">Добавить нового клиента</a>
+    </div>
+
+    @Html.Partial("_ShowClients", Model.ListData.Take(3).ToList())
+    @Html.Partial("_ShowClients", Model.ListData.Skip(3).ToList())
+
+    @if (Model.HasPreviousPage)
+    {
+        <a asp-action="Index" asp-route-page="@(Model.PageNumber - 1)" class="btn btn-outline-dark">
+            <i class="glyphicon glyphicon-chevron-left"></i>Назад
+        </a>
+    }
+    @if (Model.HasNextPage)
+    {
+        <a asp-action="Index" asp-route-page="@(Model.PageNumber + 1)" class="btn btn-outline-dark">
+            Вперед<i class="glyphicon glyphicon-chevron-right"></i>
+        </a>
+    }
+</div>

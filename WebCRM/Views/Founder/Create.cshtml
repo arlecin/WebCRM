@@ -1,0 +1,36 @@
+﻿@model Founder
+@{
+    ViewData["Title"] = "Создать учредителя";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div class="validation" asp-validation-summary="ModelOnly"></div>
+                <div>
+                    <input type="text" class="form-control" placeholder="ИНН" asp-for="Inn" /><br />
+                    <span asp-validation-for="Inn"></span>
+                </div>
+                <div>
+                    <input type="text" class="form-control" placeholder="Имя" asp-for="Name" /><br />
+                    <span asp-validation-for="Name"></span>
+                </div>
+                <div>
+                    <input type="text" class="form-control" placeholder="Фамилия" asp-for="Syrname" /><br />
+                    <span asp-validation-for="Syrname"></span>
+                </div>
+                <div>
+                    <input type="text" class="form-control" placeholder="Отчество" asp-for="Patronymic" /><br />
+                    <span asp-validation-for="Patronymic"></span>
+                </div>
+                <input type="submit" value="Сохранить" class="btn btn-primary my-sm-2" />
+                <a asp-action="Index" class="btn btn-primary">Отмена</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
